@@ -1,0 +1,30 @@
+{
+    "name"                    : "Blah Extension",
+    "version"                 : "11.17.2020",
+    "manifest_version"        : 2,
+    "author"                  : "David",
+    "description"             : "Blah Extension",
+    "options_ui"              : {
+      "chrome_style"              : true,
+      "open_in_tab"               : true
+    },
+    "background"              : {
+          "scripts"               : [ "js/background.js" ],
+          "persistent"            : false
+    },
+    "browser_action"          : {
+          "default_title"         : "Push this to start"
+    },
+    "content_scripts"          : [ 
+          {
+          "matches"               : [ "http://*/*", "https://*/*", "file://*/*" ],
+          "all_frames"            : true,
+          "run_at"                : "document_end",
+          "js"                    : [ "js/content.js", "js/inject.js" ]
+          }
+      ],
+    "permissions" : [
+          "<all_urls>", 
+          "tabs"
+    ]
+  }
